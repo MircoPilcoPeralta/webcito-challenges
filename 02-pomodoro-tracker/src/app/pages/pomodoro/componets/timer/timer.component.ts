@@ -1,8 +1,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   OnDestroy,
-  OnInit,
   signal,
 } from '@angular/core';
 import { CronometerPipe } from '../../pipes/cronometer.pipe';
@@ -16,9 +16,15 @@ import { CirclePercentageComponent } from '../circle-percentage/circle-percentag
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TimerComponent implements OnDestroy {
-  public maxMinutes: number = 1500;
-  public seconds = signal(this.maxMinutes);
+  public maxSeconds: number = 1500;
+  public seconds = signal(this.maxSeconds);
   private intervalReference: any;
+
+  public percentage = computed(
+    () =>
+      Math.round(((this.maxSeconds - this.seconds()) / this.maxSeconds) * 100) /
+      100
+  );
 
   ngOnDestroy(): void {
     this.removeIntervalThread();
@@ -27,7 +33,7 @@ export class TimerComponent implements OnDestroy {
   start(): void {
     this.intervalReference = setInterval(() => {
       this.seconds.update((seconds) => seconds - 1);
-    }, 1000);
+    }, 100);
   }
 
   pause(): void {
@@ -35,7 +41,7 @@ export class TimerComponent implements OnDestroy {
   }
 
   reset(): void {
-    this.seconds.set(this.maxMinutes);
+    this.seconds.set(this.maxSeconds);
     this.removeIntervalThread();
   }
 

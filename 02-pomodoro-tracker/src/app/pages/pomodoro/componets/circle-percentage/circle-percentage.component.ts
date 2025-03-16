@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   input,
   InputSignal,
 } from '@angular/core';
@@ -13,7 +14,8 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CirclePercentageComponent {
-  public percentage: InputSignal<number> = input(0);
+  public percentage = input(0);
+
   public color: string = 'green';
   public circumference: number = 2 * Math.PI * 90;
 
