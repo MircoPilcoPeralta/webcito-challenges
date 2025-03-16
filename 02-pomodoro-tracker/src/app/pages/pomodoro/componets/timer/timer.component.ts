@@ -15,18 +15,31 @@ import { CirclePercentageComponent } from '../circle-percentage/circle-percentag
   styleUrl: './timer.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TimerComponent implements OnInit, OnDestroy {
-  public seconds = signal(0);
+export class TimerComponent implements OnDestroy {
+  public maxMinutes: number = 1500;
+  public seconds = signal(this.maxMinutes);
   private intervalReference: any;
 
-  ngOnInit(): void {
-    this.intervalReference = setInterval(() => {
-      this.seconds.update((seconds) => seconds + 1);
-    }, 1000);
-    console.log(this.intervalReference);
+  ngOnDestroy(): void {
+    this.removeIntervalThread();
   }
 
-  ngOnDestroy(): void {
+  start(): void {
+    this.intervalReference = setInterval(() => {
+      this.seconds.update((seconds) => seconds - 1);
+    }, 1000);
+  }
+
+  pause(): void {
+    this.removeIntervalThread();
+  }
+
+  reset(): void {
+    this.seconds.set(this.maxMinutes);
+    this.removeIntervalThread();
+  }
+
+  private removeIntervalThread(): void {
     if (this.intervalReference != null) {
       clearInterval(this.intervalReference);
     }
