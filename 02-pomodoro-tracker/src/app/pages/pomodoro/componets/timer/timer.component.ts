@@ -5,8 +5,8 @@ import {
   OnInit,
   signal,
 } from '@angular/core';
-import { CirclePercentageComponent } from '../circle-percentage/circle-percentage.component';
 import { CronometerPipe } from '../../pipes/cronometer.pipe';
+import { CirclePercentageComponent } from '../circle-percentage/circle-percentage.component';
 
 @Component({
   selector: 'app-timer',
