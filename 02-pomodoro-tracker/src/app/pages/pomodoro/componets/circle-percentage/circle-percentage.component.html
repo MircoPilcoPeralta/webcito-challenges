@@ -1,0 +1,38 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  [attr.width]="'200'"
+  [attr.height]="'200'"
+  viewBox="0 0 200 200"
+>
+  <circle
+    cx="100"
+    cy="100"
+    r="90"
+    stroke="lightgray"
+    stroke-width="20"
+    fill="none"
+  />
+
+  <circle
+    cx="100"
+    cy="100"
+    r="90"
+    [attr.stroke]="color"
+    stroke-width="20"
+    fill="none"
+    [attr.stroke-dasharray]="circumference"
+    [attr.stroke-dashoffset]="getStrokeDashoffset()"
+    transform="rotate(-90 100 100)"
+  />
+
+  <text
+    x="100"
+    y="100"
+    font-size="30"
+    text-anchor="middle"
+    dy=".3em"
+    fill="black"
+  >
+    {{ percentage() }}%
+  </text>
+</svg>
