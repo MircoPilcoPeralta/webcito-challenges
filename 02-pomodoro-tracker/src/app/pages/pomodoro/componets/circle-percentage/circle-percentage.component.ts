@@ -1,22 +1,26 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  computed,
   input,
-  InputSignal,
 } from '@angular/core';
+
+import { CronometerPipe } from '../../pipes/cronometer.pipe';
 
 @Component({
   selector: 'app-circle-percentage',
-  imports: [],
+  imports: [CronometerPipe],
   templateUrl: './circle-percentage.component.html',
   styleUrl: './circle-percentage.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CirclePercentageComponent {
-  public percentage = input(0);
+  private DEFAULT_COLOR: string = 'black';
 
-  public color: string = 'green';
+  public percentage = input<number>(0);
+
+  public remainingSeconds = input<number>(0);
+
+  public color = input<string>(this.DEFAULT_COLOR);
   public circumference: number = 2 * Math.PI * 90;
 
   getStrokeDashoffset(): number {

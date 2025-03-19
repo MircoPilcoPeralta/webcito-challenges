@@ -1,6 +1,10 @@
 <div class="card">
-  <p class="card__text">Pomodoro</p>
-  <p class="card__text">{{ seconds() | cronometer }}</p>
+  <p class="card__title">Pomodoro Tracker</p>
+  <app-circle-percentage
+    [color]="timerColor"
+    [percentage]="percentage()"
+    [remainingSeconds]="remainingSeconds()"
+  />
 
   <app-circle-percentage [percentage]="percentage()" />
 
