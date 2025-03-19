@@ -1,8 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  OnDestroy,
-  OnInit,
 } from '@angular/core';
 import { TimerComponent } from './componets/timer/timer.component';
 
