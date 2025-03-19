@@ -1,7 +1,8 @@
 <div class="card">
   <p class="card__title">Pomodoro Tracker</p>
   <app-circle-percentage
-    [color]="timerColor"
+    [mainColor]="timerStrongColor"
+    [secondColor]="timerLightColor"
     [percentage]="percentage()"
     [remainingSeconds]="remainingSeconds()"
   />

@@ -15,7 +15,8 @@ import { CirclePercentageComponent } from '../circle-percentage/circle-percentag
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TimerComponent implements OnDestroy {
-  public timerColor: string = '#E046D7';
+  public timerStrongColor: string = '#E046D7';
+  public timerLightColor: string = '#E046D733';
 
   public maxSeconds: number = 1500;
   public remainingSeconds = signal(this.maxSeconds);

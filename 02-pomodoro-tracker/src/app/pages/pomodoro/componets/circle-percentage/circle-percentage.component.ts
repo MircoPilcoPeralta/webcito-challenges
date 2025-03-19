@@ -1,8 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 import { CronometerPipe } from '../../pipes/cronometer.pipe';
 
@@ -20,7 +16,9 @@ export class CirclePercentageComponent {
 
   public remainingSeconds = input<number>(0);
 
-  public color = input<string>(this.DEFAULT_COLOR);
+  public mainColor = input<string>(this.DEFAULT_COLOR);
+  public secondColor = input<string>(this.DEFAULT_COLOR);
+
   public circumference: number = 2 * Math.PI * 90;
 
   getStrokeDashoffset(): number {
