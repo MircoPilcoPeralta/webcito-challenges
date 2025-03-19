@@ -6,8 +6,6 @@
     [remainingSeconds]="remainingSeconds()"
   />
 
-  <app-circle-percentage [percentage]="percentage()" />
-
-  <button class="card__button" (click)="start()">Start/pause</button>
-  <button class="card__button" (click)="reset()">Reset</button>
+  <button class="card__button--info" (click)="start()">Start Pomodoro</button>
+  <button class="card__button--danger" (click)="reset()">Pause Pomodoro</button>
 </div>
