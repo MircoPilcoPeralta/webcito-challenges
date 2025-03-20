@@ -8,13 +8,20 @@
   position: absolute;
 }
 
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .bottom-left-circle {
   position: absolute;
   top: 60%;
   left: -5%;
   width: 400px;
   height: 400px;
-  flex-shrink: 0;
 
   border-radius: 400px;
   background: #1a2538;
@@ -28,18 +35,9 @@
   right: -3%;
   width: 400px;
   height: 400px;
-  flex-shrink: 0;
 
   border-radius: 400px;
   background: #1a2538;
   box-shadow: 9px 9px 16px 0px rgba(0, 0, 0, 0.24),
     -4px -4px 16px 0px rgba(73, 73, 73, 0.4);
-}
-
-.container {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
