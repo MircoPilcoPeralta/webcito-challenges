@@ -7,6 +7,14 @@
     [remainingSeconds]="remainingSeconds()"
   />
 
-  <button class="card__button--info" (click)="start()">Start Pomodoro</button>
-  <button class="card__button--danger" (click)="reset()">Pause Pomodoro</button>
+  <button class="card__button--info" (click)="start()">
+    {{ startButtonText }}
+  </button>
+  <button
+    class="card__button--danger"
+    (click)="pauseOrRestore()"
+    [disabled]="isButtonDisabled()"
+  >
+    Pause Pomodoro
+  </button>
 </div>

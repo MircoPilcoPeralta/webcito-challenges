@@ -1,0 +1,7 @@
+export class StateConstant {
+  public static readonly READY_TO_RUN_POMODORO_COUNTDOWN_STATE =
+    'READY_TO_RUN_POMODORO_COUNTDOWN_STATE';
+
+  public static readonly READY_TO_RUN_BREAK_COUNTDOWN_STATE =
+    'READY_TO_RUN_BREAK_COUNTDOWN_STATE';
+}
