@@ -27,6 +27,8 @@
 }
 
 .card__button--info {
+  cursor: pointer;
+
   color: #fff;
   font-family: Roboto;
   font-size: 16px;
@@ -47,6 +49,8 @@
 }
 
 .card__button--danger {
+  cursor: pointer;
+
   color: #f94409;
   font-family: Roboto;
   font-size: 16px;
