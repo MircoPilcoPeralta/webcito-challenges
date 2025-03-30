@@ -15,6 +15,7 @@ export class TimerService {
   private _uiSignal = signal<UiProps>({
     startButtonText: '',
     pauseButtonText: '',
+    pauseButtonActive: false,
     progressColor: '',
     progressBackgroundColor: ''
   });
@@ -82,6 +83,10 @@ export class TimerService {
 
   public get progressBackgroundColor() {
     return this._uiSignal().progressBackgroundColor;
+  }
+
+  public get pauseButtonActive() {
+    return this._uiSignal().pauseButtonActive;
   }
 
 }

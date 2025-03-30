@@ -37,7 +37,8 @@ export class WaitingForStartState implements TimerState {
     this._uiSignal.update((values) => ({
       ...values,
       startButtonText: buttonText,
-      pauseButtonText: pauseText
+      pauseButtonText: pauseText,
+      pauseButtonActive: true
     }));
 
     this._timerStateManager.state = new WorkingState(

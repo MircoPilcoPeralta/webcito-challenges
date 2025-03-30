@@ -59,6 +59,7 @@ export class PreparingState implements TimerState {
       ...values,
       startButtonText: startButtonText,
       pauseButtonText: pauseButtonText,
+      pauseButtonActive: false,
       progressColor,
       progressBackgroundColor
     }));
