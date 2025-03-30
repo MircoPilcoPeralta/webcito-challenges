@@ -15,6 +15,8 @@ export class TimerService {
   private _uiSignal = signal<UiProps>({
     startButtonText: '',
     pauseButtonText: '',
+    progressColor: '',
+    progressBackgroundColor: ''
   });
 
   private _percentage = computed(
@@ -73,4 +75,13 @@ export class TimerService {
   public get pauseButtonText() {
     return this._uiSignal().pauseButtonText;
   }
+
+  public get progressColor() {
+    return this._uiSignal().progressColor;
+  }
+
+  public get progressBackgroundColor() {
+    return this._uiSignal().progressBackgroundColor;
+  }
+
 }

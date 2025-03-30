@@ -1,8 +1,8 @@
 <div class="card">
   <p class="card__title">Pomodoro Tracker</p>
   <app-circle-percentage
-    [mainColor]="timerStrongColor"
-    [secondColor]="timerLightColor"
+    [mainColor]="progressColor"
+    [secondColor]="progressBackgroundColor"
     [percentage]="percentage()"
     [remainingSeconds]="remainingSeconds"
   />
@@ -13,7 +13,6 @@
   <button
     class="card__button--danger"
     (click)="pauseOrRestore()"
-
   >
     {{ pauseButtonText }}
   </button>

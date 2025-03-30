@@ -15,9 +15,6 @@ import { CirclePercentageComponent } from '../circle-percentage/circle-percentag
   providers: [TimerService],
 })
 export class TimerComponent {
-  public timerStrongColor: string = '#E046D7';
-  public timerLightColor: string = '#E046D733';
-
   constructor(private readonly _timerService: TimerService) {}
 
   start() {
@@ -26,12 +23,6 @@ export class TimerComponent {
 
   pauseOrRestore(): void {
     this._timerService.pauseOrRestore();
-  }
-
-  isButtonDisabled(): boolean {
-    return (
-      this._timerService.maxSeconds === this._timerService.remainingSeconds
-    );
   }
 
   get percentage() {
@@ -49,4 +40,13 @@ export class TimerComponent {
   get pauseButtonText() {
     return this._timerService.pauseButtonText
   }
+
+  public get progressColor() {
+    return this._timerService.progressColor;
+  }
+
+  public get progressBackgroundColor() {
+    return this._timerService.progressBackgroundColor;
+  }
+
 }
