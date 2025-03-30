@@ -1,14 +1,10 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  computed,
-  OnDestroy,
-  OnInit,
-  signal,
+  OnDestroy
 } from '@angular/core';
-import { CirclePercentageComponent } from '../circle-percentage/circle-percentage.component';
 import { TimerService } from '../../services/Timer.service';
-import { StateConstant } from '../../constants';
+import { CirclePercentageComponent } from '../circle-percentage/circle-percentage.component';
 
 @Component({
   selector: 'app-timer',
@@ -18,37 +14,23 @@ import { StateConstant } from '../../constants';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [TimerService],
 })
-export class TimerComponent implements OnDestroy {
+export class TimerComponent {
   public timerStrongColor: string = '#E046D7';
   public timerLightColor: string = '#E046D733';
 
   constructor(private readonly _timerService: TimerService) {}
 
-  ngOnDestroy(): void {
-    this._timerService.removeIntervalThread();
-  }
-
   start() {
     this._timerService.start();
   }
 
-  pauseOrRestore() {
-    if (this.iscountdownRunning()) {
-      this._timerService.pause();
-    } else {
-      this._timerService.startOrRestore();
-    }
-  }
-
-  iscountdownRunning(): boolean {
-    console.log(this._timerService.intervalReference);
-
-    return this._timerService.intervalReference !== null;
+  pauseOrRestore(): void {
+    this._timerService.pauseOrRestore();
   }
 
   isButtonDisabled(): boolean {
     return (
-      this._timerService.maxSeconds() === this._timerService.remainingSeconds()
+      this._timerService.maxSeconds === this._timerService.remainingSeconds
     );
   }
 
@@ -60,31 +42,7 @@ export class TimerComponent implements OnDestroy {
     return this._timerService.remainingSeconds;
   }
 
-  get stateName() {
-    return this._timerService.state.name;
-  }
-
   get startButtonText() {
-    if (!this._timerService.state.name) {
-      throw Error(
-        'Error while initializing the text of the button to start the countdown'
-      );
-    }
-
-    if (
-      this._timerService.state.name ===
-      StateConstant.READY_TO_RUN_POMODORO_COUNTDOWN_STATE
-    ) {
-      return 'Start Pomodoro';
-    }
-
-    if (
-      this._timerService.state.name ===
-      StateConstant.READY_TO_RUN_BREAK_COUNTDOWN_STATE
-    ) {
-      return 'Start break';
-    }
-
-    return null;
+    return this._timerService.startButtonText
   }
 }

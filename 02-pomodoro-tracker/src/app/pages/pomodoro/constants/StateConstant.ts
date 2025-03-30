@@ -1,7 +1,6 @@
 export class StateConstant {
-  public static readonly READY_TO_RUN_POMODORO_COUNTDOWN_STATE =
-    'READY_TO_RUN_POMODORO_COUNTDOWN_STATE';
-
-  public static readonly READY_TO_RUN_BREAK_COUNTDOWN_STATE =
-    'READY_TO_RUN_BREAK_COUNTDOWN_STATE';
+  public static readonly PREPARING_STATE = "PREPARING_STATE";
+  public static readonly WAITING_FOR_START_STATE = "WAITING_FOR_START_STATE";
+  public static readonly WORKING_STATE = "WORKING_STATE";
+  public static readonly PAUSED_STATE = "PAUSED_STATE";
 }

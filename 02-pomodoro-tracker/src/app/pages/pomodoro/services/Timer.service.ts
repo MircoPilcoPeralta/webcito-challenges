@@ -1,94 +1,76 @@
 import { computed, Injectable, signal } from '@angular/core';
-import { State } from '../interfaces/State';
-import { MinutsInSeconds, StateConstant } from '../constants';
-import { ReadyToRunPomodoroCountdownState } from '../model';
-// todo modificar el código para evitar que se importe el servicio a el componente root
-@Injectable({
-  providedIn: 'root',
-})
-export class TimerService {
-  private _state: State;
-  private _intervalReference: any = null;
+import { TimerStateManager } from '../helpers';
+import { TimerCommand } from '../helpers';
+import { TimerProps, UiProps } from '../interfaces';
 
-  private _maxSeconds = signal(MinutsInSeconds.TWENTY_FIVE_MINUTES_IN_SECONDS);
-  private _remainingSeconds = signal(
-    MinutsInSeconds.TWENTY_FIVE_MINUTES_IN_SECONDS
-  );
+@Injectable()
+export class TimerService {
+  private _timerSignal = signal<TimerProps>({
+    maxSeconds: 0,
+    remainingSeconds: 0,
+    percentage: 0,
+    intervalReference: null as any,
+  });
+
+  private _uiSignal = signal<UiProps>({
+    startButtonText: '',
+    pauseButtonText: '',
+  });
 
   private _percentage = computed(
     () =>
-      ((this._maxSeconds() - this._remainingSeconds()) / this._maxSeconds()) *
-      1000
+      ((this._timerSignal().maxSeconds - this._timerSignal().remainingSeconds) /
+        this._timerSignal().maxSeconds) *
+      100
   );
 
+  private _timerStateManager: TimerStateManager;
+  private _timerCommand: TimerCommand;
+
   constructor() {
-    this._state = new ReadyToRunPomodoroCountdownState(this);
+    this._timerStateManager = new TimerStateManager(
+      this._timerSignal,
+      this._uiSignal
+    );
+    this._timerCommand = new TimerCommand(this._timerStateManager);
   }
 
   start() {
-    if (
-      this._state.name === StateConstant.READY_TO_RUN_POMODORO_COUNTDOWN_STATE
-    ) {
-      this.readyToRunPomodoroCountdownState();
-      return;
-    }
-
-    if (this._state.name === StateConstant.READY_TO_RUN_BREAK_COUNTDOWN_STATE) {
-      this.readyToRunBreakCountdownState();
-      return;
-    }
+    this._timerCommand.start();
   }
 
-  readyToRunPomodoroCountdownState(): void {
-    this.state.readyToRunPomodoroCountdownState();
-  }
-
-  readyToRunBreakCountdownState(): void {
-    this.state.readyToRunBreakCountdownState();
-  }
-
-  startOrRestore() {
-    this._intervalReference = setInterval(() => {
-      this._remainingSeconds.update((seconds: number) => seconds - 1);
-    }, 100);
-  }
-
-  pause() {
-    this.removeIntervalThread();
-  }
-
-  removeIntervalThread(): void {
-    if (this._intervalReference != null) {
-      clearInterval(this._intervalReference);
-      this._intervalReference = null;
-    }
+  pauseOrRestore(): void {
+    this._timerCommand.pauseOrResume();
   }
 
   public get maxSeconds() {
-    return this._maxSeconds;
+    return this._timerSignal().maxSeconds;
   }
 
   public get remainingSeconds() {
-    return this._remainingSeconds;
+    return this._timerSignal().remainingSeconds;
   }
 
   public get percentage() {
     return this._percentage;
   }
 
-  public get state(): State {
-    return this._state;
-  }
-
-  public set state(state: State) {
-    this._state = state;
-  }
-
   public get intervalReference() {
-    return this._intervalReference;
+    return this._timerSignal().intervalReference;
   }
 
   public set intervalReference(value: any) {
-    this._intervalReference = value;
+    this._timerSignal.set({
+      ...this._timerSignal(),
+      intervalReference: value,
+    });
+  }
+
+  public get startButtonText() {
+    return this._uiSignal().startButtonText;
+  }
+
+  public get pauseButtonText() {
+    return this._uiSignal().startButtonText;
   }
 }
