@@ -4,6 +4,11 @@ import { TimerProps, UiProps, TimerState } from '../interfaces';
 
 import { PreparingState } from '../State';
 
+// Dos errores:
+// 1.- No pensar en métodos que permitan moverse a otros estados alternativos
+// 2.- Pensar que el servicio debia encargarse de manipular el state manager cuando otra clase podía probeer una
+// capa de abstracción mayor que permita al servicio realizar su labor y limitarse.
+// 3.- Error al crear variantes de clases que hacen casi lo mismo
 
 export class TimerStateManager {
   private _state: TimerState;

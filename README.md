@@ -1,78 +1,81 @@
-# 🚀 Webcito Challenges 
+# 🍅 Webcito Challenge - Pomodoro Tracker
 
-Bienvenido al repositorio de **Webcito Challenges**, donde publicaremos retos semanales de programación. Cada reto tendrá su propia carpeta dentro del repositorio y debe mantenerse el nombre de la carpeta correspondiente. Además, cada reto incluirá un archivo **README.md** con hitos que representarán puntos clave a lograr. Estos hitos estarán en formato de checkbox en GitHub y deberán estar marcados en el repositorio una vez completados ✅.
+Bienvenido al reto **Pomodoro Tracker**, parte de los desafíos de **Webcito Challenges**. En este reto, desarrollarás tu propia versión del método Pomodoro, un técnica de administración del tiempo que te ayudará a mejorar tu enfoque y productividad.
 
-El objetivo principal de estos desafíos es mejorar las habilidades de desarrollo de los participantes a través de ejercicios prácticos y progresivos. Los retos pueden abordar diversas áreas, diseño de interfaces, consumo de APIs, bases de datos y mucho más. 🏆✨
+## 📝 Descripción del Proyecto
+Cuando tu energía se concentra en una sola cosa, te vuelves más poderoso. Pomodoro es un método que permite mejorar la administración del tiempo dedicado a una actividad. Tu reto será desarrollar tu propia versión de Pomodoro dándole un diseño único y diferenciador.
 
-Si lo consideran conveniente, pueden desarrollar los retos en sus propios repositorios personales, lo cual les permitirá llevar un mejor control de su progreso individual. Sin embargo, es **obligatorio** que el código final esté disponible en este repositorio a través de un Pull Request. 📌🚀
+🔗 **Diseño en Figma**: [Enlace al diseño](https://www.figma.com/design/R0uOaMMuxcVBvdcDhG72uY/Pomodoro_Tracker?node-id=0-1&t=Zh19H6CjqYnSIzDv-1)
 
-Además, fomentamos la colaboración y el aprendizaje en equipo, por lo que pueden revisar y comentar los códigos de sus compañeros. ¡El feedback constructivo siempre es bienvenido! 💬🤝
+## 📌 Requisitos
+- Estilo libre. Lleva el diseño al código utilizando tu framework favorito o con HTML y CSS, sin ninguna limitación.
+- El Pomodoro siempre deberá iniciar con una cuenta regresiva de **25 minutos**.
+- Al iniciar el Pomodoro, el botón de **Iniciar Pomodoro** deberá cambiar su texto.
+- Al iniciar el Pomodoro, el botón de **Pausar Pomodoro** se habilitará.
+- Al pausar el Pomodoro, el botón deberá cambiar su texto.
+- El usuario podrá iniciar un **Break** mientras está en un Pomodoro. Al hacer clic, la interfaz cambiará a la vista de **Break** con una cuenta regresiva de **5 minutos**.
+- Después de completar un Pomodoro o un Break, se deberá mostrar un contador con el número de Pomodoros/Breaks realizados.
+- La aplicación debe ser **responsive**, cubriendo todas las resoluciones del diseño.
 
-## Pasos para comenzar 🚀🔥💡
 
-1. **Hacer fork** del repositorio.
-2. **Realizar el reto correspondiente** dentro de la carpeta asignada.
-3. **Realizar un deploy** del proyecto para que pueda visualizarse en línea.
-4. **Subir los cambios** a tu fork del repositorio.
-5. **Realizar un Pull Request (PR)** hacia este repositorio en la carpeta correspondiente al reto.
-6. **Revisar y responder feedback** en caso de que algún colaborador haga observaciones.
+## 🎯 Objetivos principales
+Para completar el reto, marca los siguientes hitos:
 
-Es importante asegurarse de que el código sea limpio, bien documentado y siga buenas prácticas de desarrollo antes de enviarlo. 📖✅
+- [ ] Implementar la cuenta regresiva de **25 minutos** para Pomodoro y **5 minutos** para Break.
+- [ ] Cambiar el texto del botón de **Iniciar/Pausar Pomodoro** según el estado del temporizador.
+- [ ] Permitir que el usuario inicie un **Break** mientras está en un Pomodoro.
+- [ ] Mostrar un **contador** de Pomodoros/Breaks completados.
+- [ ] Asegurar que el diseño sea **responsive**.
+- [ ] Implementar una forma de **desplegar** la aplicación en línea.
 
-## Formato del Pull Request 📝✅📌
+## 🚀 Objetivos secundarios
+Si quieres llevar tu implementación al siguiente nivel, intenta cumplir con estos retos adicionales:
 
-Para mantener la organización del repositorio, se debe seguir el siguiente formato al realizar un PR:
+- [ ] Implementar notificaciones sonoras al finalizar cada ciclo de Pomodoro o Break
+- [ ] Añadir un historial de sesiones completadas utilizando almacenamiento local (localStorage)
+- [ ] Optimizar el rendimiento para conseguir un puntaje superior a 90 en PageSpeed Insights
+- [ ] Utilizar patrones avanzados de JavaScript como módulos, closures o el patrón Observer
+- [ ] Implementar un tema oscuro/claro con CSS variables y JavaScript
+- [ ] Crear tests unitarios para las funciones principales de la aplicación
+- [ ] Optimizar la aplicación para funcionar sin conexión (PWA)
 
-**Título:** `[Reto #] - Nombre del reto`
+## 🚀 Pasos para participar
+1. **Hacer fork** del repositorio de Webcito Challenges.
+2. **Crear una carpeta** dentro del repositorio con el nombre del reto.
+3. **Desarrollar el reto** siguiendo los requisitos.
+4. **Realizar un deploy** para que el proyecto pueda visualizarse en línea.
+5. **Subir los cambios** a tu fork del repositorio.
+6. **Hacer un Pull Request (PR)** al repositorio principal en la carpeta del reto.
+7. **Revisar y responder feedback** si algún colaborador hace observaciones.
+
+## 📝 Formato del Pull Request
+Para mantener la organización del repositorio, sigue el siguiente formato al hacer un PR:
+
+**Título:** `[Reto #] - Pomodoro Tracker`
 
 **Descripción:**
-
 - **Nombre:** *[Tu nombre o usuario de GitHub]*
-- **Herramientas utilizadas:** *[Ejemplo: JavaScript, React, Angular, TailwindCSS.]*
-- **Descripción breve:** *[Explicación corta del reto y tu solución, este apartado es opcional]*
+- **Herramientas utilizadas:** *[Ejemplo: JavaScript, React, Vue, TailwindCSS.]*
 - **Deploy:** *[Enlace del deploy]*
 - **Checklist de hitos completados:**
-  - [x] Hito 1 - *Descripción breve del hito*
-  - [x] Hito 2 - *Descripción breve del hito*
-  - [x] Hito 3 - *Descripción breve del hito*
+  - [x] Hito 1 - Implementar cuenta regresiva de Pomodoro y Break.
+  - [x] Hito 2 - Cambiar el texto del botón según el estado.
+  - [x] Hito 3 - Implementar la vista de Break.
   - [ ] Hito opcional - *(Si aplica)*
 
-El checklist de hitos en el PR debe coincidir con el del **README.md** dentro de la carpeta del reto correspondiente. 📌✅
+## 🔍 Revisión de código y feedback
+Para mejorar juntos:
+- Revisa y prueba los códigos de otros participantes.
+- Deja comentarios constructivos en los PRs.
+- Comparte recursos y sugerencias de mejora.
 
-### Ejemplo de PR 🛠️💻🎯
-
-**Título:** `[Reto 3] - Conversor de Monedas`
-
-**Descripción:**
-
-- **Nombre:** *Juan Pérez*
-- **Herramientas utilizadas:** *JavaScript*
-- **Descripción breve:** *Este proyecto toma una cantidad en una moneda y la convierte a otra utilizando tasas de cambio en tiempo real.*
-- **Deploy:** *[https://mi-conversor.vercel.app/](https://mi-conversor.vercel.app/)*
-- **Checklist de hitos completados:**
-  - [x] Implementación de la conversión de moneda
-  - [x] Integración con API de tasas de cambio
-  - [x] Interfaz gráfica funcional
-  - [ ] Implementación de almacenamiento local (opcional)
-
-## Revisión de código y feedback 🔍💡👥
-
-Para que la comunidad crezca y todos podamos aprender juntos, se recomienda:
-- Leer y probar los códigos de otros participantes.
-- Dejar comentarios constructivos en los PR.
-- Hacer sugerencias de mejora o reportar posibles errores.
-- Compartir recursos útiles relacionados con los retos.
-
-El objetivo es crear un entorno colaborativo donde todos puedan mejorar sus habilidades y aprender nuevas técnicas. 🤓🎯
-
-## Recursos útiles 📚🔗
-
-Si necesitas ayuda con alguna tecnología, aquí hay algunos recursos recomendados:
+<!-- ## 📚 Recursos recomendados
 - [MDN Web Docs](https://developer.mozilla.org/)
 - [FreeCodeCamp](https://www.freecodecamp.org/)
-- [W3Schools](https://www.w3schools.com/)
-- [Stack Overflow](https://stackoverflow.com/)
+- [CSS-Tricks - Flexbox y Grid](https://css-tricks.com/) -->
 
 ---
+Recuerda: **La mejor forma de aprender a programar es programando**. 💻🔥
 
-Recuerda: *La mejor manera de aprender a programar es programando.* 💻✨
+¡Diviértete creando tu Pomodoro Tracker! 🍅⏳
+
