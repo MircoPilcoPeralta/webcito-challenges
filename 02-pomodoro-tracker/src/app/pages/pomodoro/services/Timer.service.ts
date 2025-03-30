@@ -71,6 +71,6 @@ export class TimerService {
   }
 
   public get pauseButtonText() {
-    return this._uiSignal().startButtonText;
+    return this._uiSignal().pauseButtonText;
   }
 }

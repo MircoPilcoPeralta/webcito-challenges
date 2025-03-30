@@ -4,6 +4,7 @@ import { TimerProps, UiProps, TimerState } from '../interfaces';
 
 import { PreparingState } from '../State';
 
+
 export class TimerStateManager {
   private _state: TimerState;
 

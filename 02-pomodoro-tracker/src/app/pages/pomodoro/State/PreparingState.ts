@@ -31,10 +31,15 @@ export class PreparingState implements TimerState {
       this.stopIntervalThread();
     }
 
-    const buttonText: string =
+    const startButtonText: string =
       this.mode === ModeConstants.WORK_MODE
         ? UIConstants.START_POMODORO
         : UIConstants.START_BREAK;
+
+    const pauseButtonText: string =
+    this.mode === ModeConstants.WORK_MODE
+      ? UIConstants.PAUSE_POMODORO
+      : UIConstants.PAUSE_BREAK;
 
     const time: number =
       this.mode === ModeConstants.WORK_MODE
@@ -43,7 +48,8 @@ export class PreparingState implements TimerState {
 
     this._uiSignal.update((values) => ({
       ...values,
-      startButtonText: buttonText,
+      startButtonText: startButtonText,
+      pauseButtonText: pauseButtonText
     }));
 
     this._timerSignal.update((values) => ({

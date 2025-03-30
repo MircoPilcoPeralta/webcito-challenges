@@ -57,13 +57,16 @@ export class PausedState implements TimerState {
       this.mode === ModeConstants.WORK_MODE
         ? ModeConstants.BREAK_MODE
         : ModeConstants.WORK_MODE;
+
     this._timerStateManager.state = new PreparingState(
       this.mode,
       this._timerStateManager,
       this._timerSignal,
       this._uiSignal
     );
+
     this._timerStateManager.prepare();
+    this._timerStateManager.waitForStart();
   }
 
   restoreWhilePaused(): void {

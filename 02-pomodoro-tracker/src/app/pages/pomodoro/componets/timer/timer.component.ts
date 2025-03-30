@@ -45,4 +45,8 @@ export class TimerComponent {
   get startButtonText() {
     return this._timerService.startButtonText
   }
+
+  get pauseButtonText() {
+    return this._timerService.pauseButtonText
+  }
 }

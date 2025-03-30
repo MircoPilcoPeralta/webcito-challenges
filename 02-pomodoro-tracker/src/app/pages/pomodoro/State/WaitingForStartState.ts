@@ -1,5 +1,5 @@
 import { WritableSignal } from '@angular/core';
-import { StateConstant } from '../constants';
+import { ModeConstants, StateConstant, UIConstants } from '../constants';
 import { TimerStateManager } from '../helpers';
 import { TimerProps, TimerState, UiProps } from '../interfaces';
 
@@ -31,6 +31,15 @@ export class WaitingForStartState implements TimerState {
   }
 
   waitForStart(): void {
+    const buttonText = this.mode == ModeConstants.WORK_MODE? UIConstants.START_BREAK : UIConstants.START_POMODORO;
+    const pauseText = this.mode == ModeConstants.WORK_MODE? UIConstants.PAUSE_POMODORO : UIConstants.PAUSE_BREAK;
+
+    this._uiSignal.update((values) => ({
+      ...values,
+      startButtonText: buttonText,
+      pauseButtonText: pauseText
+    }));
+
     this._timerStateManager.state = new WorkingState(
       this.mode,
       this._timerStateManager,
