@@ -4,4 +4,7 @@ export class UIConstants {
 
   public static readonly PAUSE_POMODORO = "Pause pomodoro";
   public static readonly PAUSE_BREAK = "Pause break";
+
+  public static readonly RESUME_POMODORO = "Resume pomodoro";
+  public static readonly RESUME_BREAK = "Resume break";
 }

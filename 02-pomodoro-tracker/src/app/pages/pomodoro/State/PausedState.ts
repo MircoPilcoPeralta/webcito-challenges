@@ -1,7 +1,7 @@
 import { TimerStateManager } from '../helpers';
 import { WritableSignal } from '@angular/core';
 import { TimerProps, UiProps, TimerState } from '../interfaces';
-import { StateConstant, ModeConstants } from '../constants';
+import { StateConstant, ModeConstants, UIConstants } from '../constants';
 
 import { WorkingState, PreparingState } from './';
 
@@ -47,6 +47,14 @@ export class PausedState implements TimerState {
   }
 
   pause(): void {
+    const pauseText = this._timerStateManager.state.mode === ModeConstants.WORK_MODE? UIConstants.RESUME_POMODORO: UIConstants.RESUME_BREAK;
+
+    this._uiSignal.update((values)=> (
+      {
+        ...values,
+        pauseButtonText: pauseText
+      }
+    ));
     if (this._timerSignal().intervalReference !== null) {
       this.stopIntervalThread();
     }
@@ -70,6 +78,15 @@ export class PausedState implements TimerState {
   }
 
   restoreWhilePaused(): void {
+    const pauseText = this._timerStateManager.state.mode === ModeConstants.WORK_MODE? UIConstants.PAUSE_POMODORO: UIConstants.PAUSE_BREAK;
+
+    this._uiSignal.update((values)=> (
+      {
+        ...values,
+        pauseButtonText: pauseText
+      }
+    ));
+
     this._timerStateManager.state = new WorkingState(
       this.mode,
       this._timerStateManager,
