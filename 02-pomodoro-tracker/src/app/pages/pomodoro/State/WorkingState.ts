@@ -1,5 +1,6 @@
 import { WritableSignal } from '@angular/core';
 import {
+  LocalStorageConstants,
   ModeConstants,
   StateConstant,
   TimeConstants
@@ -7,7 +8,7 @@ import {
 import { TimerStateManager } from '../helpers';
 import { TimerProps, TimerState, UiProps } from '../interfaces';
 
-import { PausedState, PreparingState, WaitingForStartState } from './';
+import { PausedState, PreparingState } from './';
 
 export class WorkingState implements TimerState {
   mode: string;
@@ -77,6 +78,8 @@ export class WorkingState implements TimerState {
       this.mode === ModeConstants.WORK_MODE
         ? this._uiSignal().sessions + 1
         : this._uiSignal().sessions;
+
+    localStorage.setItem(LocalStorageConstants.SESSIONS_KEY, updatedSessions.toString());
 
     this._uiSignal.update((values) => ({
       ...values,

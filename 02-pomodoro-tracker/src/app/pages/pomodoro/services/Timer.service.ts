@@ -1,34 +1,35 @@
 import { Injectable, signal } from '@angular/core';
 import { TimerCommand, TimerStateManager } from '../helpers';
 import { TimerProps, UiProps } from '../interfaces';
+import { LocalStorageService } from './LocalStorage.service';
 
 @Injectable()
 export class TimerService {
-  private _timerSignal = signal<TimerProps>({
-    maxSeconds: 0,
-    remainingSeconds: 0,
-    percentage: 0,
-    intervalReference: null as any,
-  });
-
-  private _uiSignal = signal<UiProps>({
-    startButtonText: '',
-    pauseButtonText: '',
-    pauseButtonActive: false,
-    isSessionPaused: false,
-    progressColor: '',
-    progressBackgroundColor: '',
-    sessions: 0
-  });
+  private _timerSignal;
+  private _uiSignal;
 
   private _timerStateManager: TimerStateManager;
   private _timerCommand: TimerCommand;
 
-  constructor() {
-    this._timerStateManager = new TimerStateManager(
-      this._timerSignal,
-      this._uiSignal
-    );
+  constructor(private readonly _localStorageService: LocalStorageService) {
+    this._timerSignal = signal<TimerProps>({
+      maxSeconds: 0,
+      remainingSeconds: 0,
+      percentage: 0,
+      intervalReference: null as any,
+    });
+
+    this._uiSignal = signal<UiProps>({
+      startButtonText: '',
+      pauseButtonText: '',
+      pauseButtonActive: false,
+      isSessionPaused: false,
+      progressColor: '',
+      progressBackgroundColor: '',
+      sessions: this._localStorageService.getSessions()
+    });
+
+    this._timerStateManager = new TimerStateManager(this._timerSignal, this._uiSignal);
     this._timerCommand = new TimerCommand(this._timerStateManager);
   }
 

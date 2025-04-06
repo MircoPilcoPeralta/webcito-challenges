@@ -5,6 +5,7 @@ import {
 } from '@angular/core';
 import { TimerService } from '../../services/Timer.service';
 import { CirclePercentageComponent } from '../circle-percentage/circle-percentage.component';
+import { LocalStorageService } from '../../services/LocalStorage.service';
 
 @Component({
   selector: 'app-timer',
@@ -12,7 +13,7 @@ import { CirclePercentageComponent } from '../circle-percentage/circle-percentag
   templateUrl: './timer.component.html',
   styleUrl: './timer.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [TimerService],
+  providers: [TimerService, LocalStorageService],
 })
 export class TimerComponent {
   constructor(private readonly _timerService: TimerService) {}
