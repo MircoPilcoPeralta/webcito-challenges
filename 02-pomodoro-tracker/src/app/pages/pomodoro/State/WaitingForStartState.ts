@@ -41,6 +41,13 @@ export class WaitingForStartState implements TimerState {
       pauseButtonActive: true
     }));
 
+    this._timerSignal.update((values)=>(
+      {
+        ...values,
+        percentage:0
+      }
+    ))
+
     this._timerStateManager.state = new WorkingState(
       this.mode,
       this._timerStateManager,

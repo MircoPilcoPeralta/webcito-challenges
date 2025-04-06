@@ -69,8 +69,11 @@ export class WorkingState implements TimerState {
       this._timerSignal.update((state) => ({
         ...state,
         remainingSeconds: state.remainingSeconds - 1,
+        percentage: ((this._timerSignal().maxSeconds - this._timerSignal().remainingSeconds) / this._timerSignal().maxSeconds) * 100
       }));
     }, TimeConstants.ONE_SECONDS_IN_MS);
+
+
 
     this._timerSignal.set({
       ...this._timerSignal(),

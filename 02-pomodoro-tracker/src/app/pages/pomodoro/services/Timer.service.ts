@@ -1,6 +1,5 @@
-import { computed, Injectable, signal } from '@angular/core';
-import { TimerStateManager } from '../helpers';
-import { TimerCommand } from '../helpers';
+import { Injectable, signal } from '@angular/core';
+import { TimerCommand, TimerStateManager } from '../helpers';
 import { TimerProps, UiProps } from '../interfaces';
 
 @Injectable()
@@ -19,13 +18,6 @@ export class TimerService {
     progressColor: '',
     progressBackgroundColor: ''
   });
-
-  private _percentage = computed(
-    () =>
-      ((this._timerSignal().maxSeconds - this._timerSignal().remainingSeconds) /
-        this._timerSignal().maxSeconds) *
-      100
-  );
 
   private _timerStateManager: TimerStateManager;
   private _timerCommand: TimerCommand;
@@ -46,27 +38,12 @@ export class TimerService {
     this._timerCommand.pauseOrResume();
   }
 
-  public get maxSeconds() {
-    return this._timerSignal().maxSeconds;
-  }
-
   public get remainingSeconds() {
     return this._timerSignal().remainingSeconds;
   }
 
   public get percentage() {
-    return this._percentage;
-  }
-
-  public get intervalReference() {
-    return this._timerSignal().intervalReference;
-  }
-
-  public set intervalReference(value: any) {
-    this._timerSignal.set({
-      ...this._timerSignal(),
-      intervalReference: value,
-    });
+    return this._timerSignal().percentage;
   }
 
   public get startButtonText() {
