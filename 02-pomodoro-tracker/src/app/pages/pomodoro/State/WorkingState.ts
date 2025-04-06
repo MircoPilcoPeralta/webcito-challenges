@@ -39,45 +39,20 @@ export class WorkingState implements TimerState {
   }
 
   work(): void {
+
     const intervalReferenceUpdated = setInterval(() => {
       if (this._timerSignal().remainingSeconds === 0) {
-        const buttonText: string =
-          this.mode === ModeConstants.WORK_MODE
-            ? UIConstants.START_BREAK
-            : UIConstants.START_POMODORO;
-
-        const time: number =
-          this.mode === ModeConstants.WORK_MODE
-            ? TimeConstants.FIVE_MINUTES_IN_SECONDS
-            : TimeConstants.TWENTY_FIVE_MINUTES_IN_SECONDS;
-
-        this.mode =
-          this.mode === ModeConstants.WORK_MODE
-            ? ModeConstants.BREAK_MODE
-            : ModeConstants.WORK_MODE;
-
-        this._uiSignal.update((values) => ({
-          ...values,
-          startButtonText: buttonText,
-        }));
-
-        this._timerSignal.update((values) => ({
-          ...values,
-          maxSeconds: time,
-          remainingSeconds: time,
-        }));
-
+        this.changeWhileWorking();
         return;
       }
 
       this._timerSignal.update((state) => ({
         ...state,
         remainingSeconds: state.remainingSeconds - 1,
-        percentage: ((this._timerSignal().maxSeconds - this._timerSignal().remainingSeconds) / this._timerSignal().maxSeconds) * 100
+        percentage: this.updatePercentage(),
       }));
+
     }, TimeConstants.ONE_SECONDS_IN_MS);
-
-
 
     this._timerSignal.set({
       ...this._timerSignal(),
@@ -85,7 +60,18 @@ export class WorkingState implements TimerState {
     });
   }
 
+  private updatePercentage(): number {
+    return (
+      ((this._timerSignal().maxSeconds - this._timerSignal().remainingSeconds) /
+        this._timerSignal().maxSeconds) *
+      100
+    );
+  }
+
   changeWhileWorking(): void {
+    if (this._timerSignal().intervalReference) {
+      this.stopIntervalThread();
+    }
 
     const updatedSessions =
       this.mode === ModeConstants.WORK_MODE
@@ -109,13 +95,6 @@ export class WorkingState implements TimerState {
       this._uiSignal
     );
     this._timerStateManager.state.prepare();
-
-    this._timerStateManager.state = new WaitingForStartState(
-      this.mode,
-      this._timerStateManager,
-      this._timerSignal,
-      this._uiSignal
-    );
     this._timerStateManager.state.waitForStart();
   }
 
@@ -139,5 +118,14 @@ export class WorkingState implements TimerState {
 
   restoreWhilePaused(): void {
     throw new Error('Method not implemented.');
+  }
+
+  private stopIntervalThread() {
+    clearInterval(this._timerSignal().intervalReference);
+
+    this._timerSignal.set({
+      ...this._timerSignal(),
+      intervalReference: null,
+    });
   }
 }

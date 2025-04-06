@@ -31,22 +31,15 @@ export class WaitingForStartState implements TimerState {
   }
 
   waitForStart(): void {
-    const buttonText = this.mode == ModeConstants.WORK_MODE? UIConstants.START_BREAK : UIConstants.START_POMODORO;
-    const pauseText = this.mode == ModeConstants.WORK_MODE? UIConstants.PAUSE_POMODORO : UIConstants.PAUSE_BREAK;
-
     this._uiSignal.update((values) => ({
       ...values,
-      startButtonText: buttonText,
-      pauseButtonText: pauseText,
-      pauseButtonActive: true
+      pauseButtonActive: true,
     }));
 
-    this._timerSignal.update((values)=>(
-      {
-        ...values,
-        percentage:0
-      }
-    ))
+    this._timerSignal.update((values) => ({
+      ...values,
+      percentage: 0,
+    }));
 
     this._timerStateManager.state = new WorkingState(
       this.mode,

@@ -33,28 +33,25 @@ export class PreparingState implements TimerState {
   }
 
   prepare(): void {
-    if (this._timerSignal().intervalReference) {
-      this.stopIntervalThread();
-    }
-
     const startButtonText: string =
       this.mode === ModeConstants.WORK_MODE
         ? UIConstants.START_POMODORO
         : UIConstants.START_BREAK;
 
     const pauseButtonText: string =
-    this.mode === ModeConstants.WORK_MODE
-      ? UIConstants.PAUSE_POMODORO
-      : UIConstants.PAUSE_BREAK;
+      this.mode === ModeConstants.WORK_MODE
+        ? UIConstants.PAUSE_POMODORO
+        : UIConstants.PAUSE_BREAK;
 
-    const progressColor = this.mode === ModeConstants.WORK_MODE
-    ? ColorConstants.WORK_COLOR
-    : ColorConstants.BREAK_COLOR;
+    const progressColor =
+      this.mode === ModeConstants.WORK_MODE
+        ? ColorConstants.WORK_COLOR
+        : ColorConstants.BREAK_COLOR;
 
-    const progressBackgroundColor = this.mode === ModeConstants.WORK_MODE
-    ? ColorConstants.WORK_BACKGROUND_COLOR
-    : ColorConstants.BREAK_BACKGROUND_COLOR;
-
+    const progressBackgroundColor =
+      this.mode === ModeConstants.WORK_MODE
+        ? ColorConstants.WORK_BACKGROUND_COLOR
+        : ColorConstants.BREAK_BACKGROUND_COLOR;
 
     const time: number =
       this.mode === ModeConstants.WORK_MODE
@@ -113,12 +110,4 @@ export class PreparingState implements TimerState {
     throw new Error('Method not implemented.');
   }
 
-  private stopIntervalThread() {
-    clearInterval(this._timerSignal().intervalReference);
-
-    this._timerSignal.set({
-      ...this._timerSignal(),
-      intervalReference: null,
-    });
-  }
 }
