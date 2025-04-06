@@ -4,4 +4,5 @@ export interface UiProps {
   pauseButtonActive: boolean,
   progressColor: string,
   progressBackgroundColor: string,
+  sessions: number,
 }

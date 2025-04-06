@@ -49,6 +49,10 @@ export class TimerComponent {
     return this._timerService.progressBackgroundColor;
   }
 
+  public get sessions() {
+    return this._timerService.sessions;
+  }
+
   public get pauseButtonActive(): boolean {
     return this._timerService.pauseButtonActive;
   }

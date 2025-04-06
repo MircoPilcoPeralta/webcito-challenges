@@ -61,6 +61,16 @@ export class PausedState implements TimerState {
   }
 
   changeWhilePaused(): void {
+    const updatedSessions =
+      this.mode === ModeConstants.WORK_MODE
+        ? this._uiSignal().sessions + 1
+        : this._uiSignal().sessions;
+
+    this._uiSignal.update((values) => ({
+      ...values,
+      sessions: updatedSessions,
+    }));
+
     this.mode =
       this.mode === ModeConstants.WORK_MODE
         ? ModeConstants.BREAK_MODE

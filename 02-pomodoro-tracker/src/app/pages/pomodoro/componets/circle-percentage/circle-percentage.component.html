@@ -39,4 +39,20 @@
   >
     {{ remainingSeconds() | cronometer }}
   </text>
+
+  <text
+    x="100"
+    y="140"
+    font-size="16px"
+    font-weight="400"
+    font-style="normal"
+    font-family="roboto"
+    text-anchor="middle"
+    dy=".3em"
+    [attr.fill]="mainColor()"
+    [attr.visibility]="sessionPaused() || rounds() < 1 ? 'hidden': ''"
+  >
+    {{ rounds() }}x
+  </text>
+
 </svg>

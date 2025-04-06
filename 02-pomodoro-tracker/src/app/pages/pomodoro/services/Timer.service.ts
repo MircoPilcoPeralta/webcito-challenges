@@ -16,7 +16,8 @@ export class TimerService {
     pauseButtonText: '',
     pauseButtonActive: false,
     progressColor: '',
-    progressBackgroundColor: ''
+    progressBackgroundColor: '',
+    sessions: 0
   });
 
   private _timerStateManager: TimerStateManager;
@@ -60,6 +61,10 @@ export class TimerService {
 
   public get progressBackgroundColor() {
     return this._uiSignal().progressBackgroundColor;
+  }
+
+  public get sessions() {
+    return this._uiSignal().sessions;
   }
 
   public get pauseButtonActive() {

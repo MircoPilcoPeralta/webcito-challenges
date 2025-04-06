@@ -19,6 +19,8 @@ export class CirclePercentageComponent {
   public mainColor = input<string>(this.DEFAULT_COLOR);
   public secondColor = input<string>(this.DEFAULT_COLOR);
 
+  public rounds = input<number>(0);
+
   public circumference: number = 2 * Math.PI * 90;
 
   getStrokeDashoffset(): number {
