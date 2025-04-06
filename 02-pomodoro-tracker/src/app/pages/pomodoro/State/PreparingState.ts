@@ -1,5 +1,11 @@
 import { WritableSignal } from '@angular/core';
-import { ColorConstants, ModeConstants, StateConstant, TimeConstants, UIConstants } from '../constants';
+import {
+  ColorConstants,
+  ModeConstants,
+  StateConstant,
+  TimeConstants,
+  UIConstants,
+} from '../constants';
 import { TimerStateManager } from '../helpers';
 import { TimerProps, TimerState, UiProps } from '../interfaces';
 
@@ -60,8 +66,9 @@ export class PreparingState implements TimerState {
       startButtonText: startButtonText,
       pauseButtonText: pauseButtonText,
       pauseButtonActive: false,
+      isSessionPaused: false,
       progressColor,
-      progressBackgroundColor
+      progressBackgroundColor,
     }));
 
     this._timerSignal.update((values) => ({

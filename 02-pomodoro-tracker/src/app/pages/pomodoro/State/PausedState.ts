@@ -47,14 +47,17 @@ export class PausedState implements TimerState {
   }
 
   pause(): void {
-    const pauseText = this._timerStateManager.state.mode === ModeConstants.WORK_MODE? UIConstants.RESUME_POMODORO: UIConstants.RESUME_BREAK;
+    const pauseText =
+      this._timerStateManager.state.mode === ModeConstants.WORK_MODE
+        ? UIConstants.RESUME_POMODORO
+        : UIConstants.RESUME_BREAK;
 
-    this._uiSignal.update((values)=> (
-      {
-        ...values,
-        pauseButtonText: pauseText
-      }
-    ));
+    this._uiSignal.update((values) => ({
+      ...values,
+      pauseButtonText: pauseText,
+      isSessionPaused: true,
+    }));
+
     if (this._timerSignal().intervalReference !== null) {
       this.stopIntervalThread();
     }
@@ -88,14 +91,16 @@ export class PausedState implements TimerState {
   }
 
   restoreWhilePaused(): void {
-    const pauseText = this._timerStateManager.state.mode === ModeConstants.WORK_MODE? UIConstants.PAUSE_POMODORO: UIConstants.PAUSE_BREAK;
+    const pauseText =
+      this._timerStateManager.state.mode === ModeConstants.WORK_MODE
+        ? UIConstants.PAUSE_POMODORO
+        : UIConstants.PAUSE_BREAK;
 
-    this._uiSignal.update((values)=> (
-      {
-        ...values,
-        pauseButtonText: pauseText
-      }
-    ));
+    this._uiSignal.update((values) => ({
+      ...values,
+      pauseButtonText: pauseText,
+      isSessionPaused: false,
+    }));
 
     this._timerStateManager.state = new WorkingState(
       this.mode,

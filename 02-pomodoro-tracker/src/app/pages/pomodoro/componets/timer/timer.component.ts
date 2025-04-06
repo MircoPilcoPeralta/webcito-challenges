@@ -57,4 +57,7 @@ export class TimerComponent {
     return this._timerService.pauseButtonActive;
   }
 
+  public get isSessionPaused(): boolean {
+    return this._timerService.isSessionPaused;
+  }
 }

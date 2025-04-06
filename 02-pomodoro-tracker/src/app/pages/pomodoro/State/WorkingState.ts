@@ -1,5 +1,9 @@
 import { WritableSignal } from '@angular/core';
-import { ModeConstants, StateConstant, TimeConstants, UIConstants } from '../constants';
+import {
+  ModeConstants,
+  StateConstant,
+  TimeConstants
+} from '../constants';
 import { TimerStateManager } from '../helpers';
 import { TimerProps, TimerState, UiProps } from '../interfaces';
 

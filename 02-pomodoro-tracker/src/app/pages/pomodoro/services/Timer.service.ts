@@ -15,6 +15,7 @@ export class TimerService {
     startButtonText: '',
     pauseButtonText: '',
     pauseButtonActive: false,
+    isSessionPaused: false,
     progressColor: '',
     progressBackgroundColor: '',
     sessions: 0
@@ -69,6 +70,10 @@ export class TimerService {
 
   public get pauseButtonActive() {
     return this._uiSignal().pauseButtonActive;
+  }
+
+  public get isSessionPaused() {
+    return this._uiSignal().isSessionPaused;
   }
 
 }
